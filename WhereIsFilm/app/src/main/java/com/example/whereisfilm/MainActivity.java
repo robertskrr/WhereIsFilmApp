@@ -112,10 +112,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<List<Show>> call, Throwable throwable) {
                         Toast.makeText(getApplicationContext(), "ERROR AL BUSCAR", Toast.LENGTH_SHORT).show();
-                        // Esto imprimirá el error real en la pestaña "Logcat" de Android Studio
-                        System.err.println(throwable.getMessage());
                         android.util.Log.e("API_ERROR", "Causa: " + throwable.getMessage());
-                        Toast.makeText(getApplicationContext(), "Error: " + throwable.getMessage(), Toast.LENGTH_LONG).show();
                     }
                 });
     }

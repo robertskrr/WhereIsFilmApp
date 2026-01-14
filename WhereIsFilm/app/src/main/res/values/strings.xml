@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">WhereIsFilm</string>
+    <string name="disponible_en">Disponible en:</string>
+    <string name="t_tulo_de_la_pel_cula">Título de la Película</string>
+    <string name="t_tulo">Título</string>
+    <string name="buscar">Buscar</string>
 </resources>
