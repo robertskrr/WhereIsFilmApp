@@ -5,5 +5,5 @@ package com.example.whereisfilm;
  * Imagen del show
  */
 public class ImageSet {
-    public String verticalPoster; // URL de la imagen vertical
+    public PosterData verticalPoster; // URL de la imagen vertical
 }

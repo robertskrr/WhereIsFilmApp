@@ -1,5 +1,7 @@
 package com.example.whereisfilm;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
@@ -11,7 +13,7 @@ import retrofit2.http.Query;
  */
 public interface StreamingService {
     @GET("shows/search/title?country=es")
-    Call<ShowResponse> searchByTitle(
+    Call<List<Show>> searchByTitle(
             @Header("x-rapidapi-key") String apiKey,
             @Header("x-rapidapi-host") String host,
             @Query("title") String movieTitle
