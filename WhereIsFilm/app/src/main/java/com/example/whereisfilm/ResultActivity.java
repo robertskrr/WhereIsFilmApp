@@ -3,6 +3,7 @@ package com.example.whereisfilm;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.widget.ImageView;
@@ -19,6 +20,8 @@ public class ResultActivity extends AppCompatActivity {
     private TextView txtTitulo;
     private ImageView imgPortada;
     private LinearLayout container; // Contenedor con las plataformas
+
+    private MediaPlayer mp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +63,8 @@ public class ResultActivity extends AppCompatActivity {
         txtTitulo = findViewById(R.id.textTitulo);
         container = findViewById(R.id.containerPlataformas);
         imgPortada = findViewById(R.id.imagePortada);
+        mp = MediaPlayer.create(this, R.raw.busqueda_ok);
+        mp.start();
 
         String titulo = getIntent().getStringExtra("titulo");
         String urlImagen = getIntent().getStringExtra("poster");
