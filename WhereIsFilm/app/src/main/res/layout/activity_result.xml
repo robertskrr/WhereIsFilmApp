@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#00BCD4"
+    android:background="#BC80C6"
     android:padding="20dp"
     tools:context=".ResultActivity">
 
@@ -16,6 +16,7 @@
         android:gravity="center_horizontal"
         android:text="@string/t_tulo_de_la_pel_cula"
         android:textAlignment="center"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -47,24 +48,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:text="@string/disponible_en"
-        android:textColor="#757575"
+        android:textColor="#505050"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardPoster" />
 
-    <TextView
-        android:id="@+id/textPlataformasResult"
+    <LinearLayout
+        android:id="@+id/containerPlataformas"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
-        android:textAlignment="center"
-        android:textColor="@color/design_default_color_primary"
-        android:textSize="18sp"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textPlataformasHead"
-        tools:text="Netflix, HBO, Disney+" />
+        app:layout_constraintTop_toBottomOf="@+id/textPlataformasHead" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

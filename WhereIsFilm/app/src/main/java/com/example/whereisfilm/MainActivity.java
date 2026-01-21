@@ -8,9 +8,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -72,37 +72,37 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<List<Show>> call, Response<List<Show>> response) {
                         // Con un Set aseguramos que no se repitan los nombres y ordena alfabéticamente
-                        Set<String> plataformasUnicas = new TreeSet<>();
                         if (response.isSuccessful() && !response.body().isEmpty() && response.body() != null) {
                             Show encontrada = response.body().get(0);
 
                             // Preparación de salto a la activity result con los datos
                             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
                             intent.putExtra("titulo", encontrada.title);
+
                             if (encontrada.imageSet != null && encontrada.imageSet.verticalPoster != null) {
                                 String url = encontrada.imageSet.verticalPoster.w600;
                                 intent.putExtra("poster", url);
                             }
 
+                            // HashMap para evitar duplicados por nombre, guardando el objeto StreamingOption
+                            HashMap<String, StreamingOption> filtro = new HashMap<>();
                             // Sacamos las plataformas de España ("es")
-
                             if (encontrada.streamingOptions != null && encontrada.streamingOptions.containsKey("es")) {
                                 for (StreamingOption opt : encontrada.streamingOptions.get("es")) {
                                     if (opt.plataforma != null && opt.plataforma.name != null) {
-                                        plataformasUnicas.add(opt.plataforma.name);
+                                        // Si el nombre de la plataforma no está en el filtro, lo añadimos con su objeto
+                                        if (!filtro.containsKey(opt.plataforma)) {
+                                            filtro.put(opt.plataforma.name, opt);
+                                        }
                                     }
                                 }
                             }
 
-                            // Convertir el Set a String nuevamente
-                            StringBuilder listaPlataformas = new StringBuilder();
-                            for (String nombre : plataformasUnicas) {
-                                if (listaPlataformas.length() > 0) {
-                                    listaPlataformas.append(" -- "); // Separa los elementos
-                                }
-                                listaPlataformas.append(nombre);
-                            }
-                            intent.putExtra("plataformas", listaPlataformas.toString());
+                            // Convertimos el contenido del filtro en una lista para enviar
+                            ArrayList<StreamingOption> listaPlataformas = new ArrayList<>(filtro.values());
+
+                            // Enviamos la lista de objetos (nombre + link)
+                            intent.putExtra("listaPlataformas", listaPlataformas);
                             startActivity(intent);
                         } else {
                             Toast.makeText(getApplicationContext(), "No se encontraron resultados", Toast.LENGTH_SHORT).show();
