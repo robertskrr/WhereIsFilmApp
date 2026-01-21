@@ -53,6 +53,9 @@ public class ResultActivity extends AppCompatActivity {
         return android.R.drawable.ic_menu_slideshow;
     }
 
+    /**
+     * Muestra el resultado de la búsqueda
+     */
     private void mostrarResultado() {
         txtTitulo = findViewById(R.id.textTitulo);
         container = findViewById(R.id.containerPlataformas);
