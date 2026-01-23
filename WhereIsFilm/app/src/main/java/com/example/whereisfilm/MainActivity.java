@@ -1,6 +1,7 @@
 package com.example.whereisfilm;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
@@ -21,6 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainActivity extends AppCompatActivity {
 
     private EditText tituloBuscar;
+    private SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void asignarComponentes() {
         tituloBuscar = findViewById(R.id.editTextTitulo);
+        prefs = getSharedPreferences("MisPrefs", MODE_PRIVATE);
     }
 
     /**
@@ -51,6 +54,12 @@ public class MainActivity extends AppCompatActivity {
 
         // Busca el título en la API
         buscar(tituloBuscar.getText().toString());
+    }
+
+    /**
+     * Guarda la búsqueda en SharedPreferences
+     */
+    public void guardarBusqueda() {
 
     }
 

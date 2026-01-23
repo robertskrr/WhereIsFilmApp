@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#BC80C6"
+    android:background="#C5BAC6"
     android:padding="20dp"
     tools:context=".ResultActivity">
 
@@ -16,7 +16,7 @@
         android:fontFamily="sans-serif-condensed"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="8sp"
-        android:text="@string/t_tulo_de_la_pel_cula"
+        android:text="@string/titulo_de_la_pelicula"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="30sp"

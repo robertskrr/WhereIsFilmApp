@@ -16,6 +16,10 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+/**
+ * @author Robert
+ * Resultado de la búsqueda
+ */
 public class ResultActivity extends AppCompatActivity {
     private TextView txtTitulo;
     private ImageView imgPortada;
@@ -35,7 +39,7 @@ public class ResultActivity extends AppCompatActivity {
      * Asignamos el logo dependiendo de la plataforma
      *
      * @param nombrePlataforma
-     * @return
+     * @return logo
      */
     private int obtenerLogoPlataforma(String nombrePlataforma) {
         String nombre = nombrePlataforma.toLowerCase();
@@ -158,6 +162,11 @@ public class ResultActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Método para obtener el color característico de la plataforma
+     * @param opt
+     * @return color para el texto
+     */
     private int colorPlataforma(StreamingOption opt) {
         String nombre = opt.plataforma.name.toLowerCase();
 
