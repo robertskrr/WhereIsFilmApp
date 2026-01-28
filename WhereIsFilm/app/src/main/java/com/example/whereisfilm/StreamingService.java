@@ -16,6 +16,7 @@ public interface StreamingService {
     Call<List<Show>> searchByTitle(
             @Header("x-rapidapi-key") String apiKey,
             @Header("x-rapidapi-host") String host,
-            @Query("title") String movieTitle
+            @Query("title") String movieTitle,
+            @Query("output_language") String language // Devuelve los titulos en el lenguaje establecido
     );
 }

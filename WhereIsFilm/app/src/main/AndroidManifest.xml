@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/icono"
         android:supportsRtl="true"
         android:theme="@style/Theme.WhereIsFilm">
-        <activity android:name=".WebViewActivity"></activity>
+        <activity android:name=".Historial"></activity>
+        <activity android:name=".WebViewActivity" />
         <activity android:name=".ResultActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>

@@ -35,7 +35,8 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.523" />
+        app:layout_constraintVertical_bias="0.523"
+        android:autofillHints="" />
 
     <Button
         android:id="@+id/buttonBuscar"
@@ -55,6 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        android:onClick="historialBusqueda"
         android:text="@string/historial_de_busqueda"
         app:backgroundTint="#010002"
         app:layout_constraintBottom_toBottomOf="parent"

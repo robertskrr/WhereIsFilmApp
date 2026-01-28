@@ -5,4 +5,7 @@
     <string name="titulo">Título</string>
     <string name="buscar">Buscar</string>
     <string name="historial_de_busqueda">Historial de búsqueda</string>
+    <string name="historial_vacio">Historial vacío</string>
+    <string name="borrar_todo">Borrar todo</string>
+    <string name="historial_de_busquedas">HISTORIAL DE BÚSQUEDAS</string>
 </resources>

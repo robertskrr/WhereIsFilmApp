@@ -9,9 +9,12 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,11 +59,35 @@ public class MainActivity extends AppCompatActivity {
         buscar(tituloBuscar.getText().toString());
     }
 
+    public void historialBusqueda(View view) {
+        startActivity(new Intent(MainActivity.this, Historial.class));
+    }
+
     /**
      * Guarda la búsqueda en SharedPreferences
      */
-    public void guardarBusqueda() {
+    public void guardarBusqueda(String titulo) {
+        // Fecha y hora actual
+        String fecha = new SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault()).format(new Date());
 
+        // Mostrar el titulo junto con la fecha
+        String nuevaBusqueda = titulo + " - " + fecha;
+
+        // Si hay un historial anterior recogerlo para unirlo
+        String historialPrevio = prefs.getString("historial", "");
+
+        // Unirlo con lo anterior usando un salto de línea
+        String historialActualizado;
+        if (historialPrevio.isEmpty()) {
+            // Si esta vacío lo inicia simplemente con lo nuevo
+            historialActualizado = nuevaBusqueda;
+        } else {
+            // Separamos las busquedas con \n
+            historialActualizado = nuevaBusqueda + "\n" + historialPrevio;
+        }
+
+        // Lo guardamos
+        prefs.edit().putString("historial", historialActualizado).apply();
     }
 
     /**
@@ -76,14 +103,30 @@ public class MainActivity extends AppCompatActivity {
 
         StreamingService service = retrofit.create(StreamingService.class);
 
-        service.searchByTitle(Config.API_KEY, Config.API_HOST, titulo)
+        service.searchByTitle(Config.API_KEY, Config.API_HOST, titulo, "es")
                 .enqueue(new Callback<List<Show>>() {
                     @Override
                     public void onResponse(Call<List<Show>> call, Response<List<Show>> response) {
                         // Con un Set aseguramos que no se repitan los nombres y ordena alfabéticamente
                         if (response.isSuccessful() && !response.body().isEmpty() && response.body() != null) {
-                            Show encontrada = response.body().get(0);
+                            List<Show> resultados = response.body();
+                            Show encontrada = null;
 
+                            // Búsqueda exacta de lo que se ha escrito
+                            for (Show s : resultados) {
+                                if (s.title.equalsIgnoreCase(titulo.trim())) {
+                                    encontrada = s;
+                                    break;
+                                }
+                            }
+
+                            // Si después de buscar no encuentra coincidencia exacta se queda con la primera relevante
+                            if (encontrada == null) {
+                                encontrada = resultados.get(0);
+                            }
+
+                            // Guardamos la búsqueda en el historial
+                            guardarBusqueda(encontrada.title);
                             // Preparación de salto a la activity result con los datos
                             Intent intent = new Intent(MainActivity.this, ResultActivity.class);
                             intent.putExtra("titulo", encontrada.title);

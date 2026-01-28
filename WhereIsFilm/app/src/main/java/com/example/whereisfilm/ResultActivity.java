@@ -184,4 +184,13 @@ public class ResultActivity extends AppCompatActivity {
 
         return Color.BLACK;
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mp != null) {
+            mp.release(); // Libera el recurso del sonido
+            mp = null;
+        }
+    }
 }
