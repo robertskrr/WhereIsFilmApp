@@ -7,5 +7,10 @@
     <string name="historial_de_busqueda">Historial de búsqueda</string>
     <string name="historial_vacio">Historial vacío</string>
     <string name="borrar_todo">Borrar todo</string>
-    <string name="historial_de_busquedas">HISTORIAL DE BÚSQUEDAS</string>
+    <string name="historial_de_busquedas">🔎 HISTORIAL DE BÚSQUEDAS 🔍</string>
+    <string name="error_titulo_vacio">Introduce un título por favor</string>
+    <string name="no_resultados">No se encontraron resultados</string>
+    <string name="error_buscar">ERROR AL BUSCAR</string>
+    <string name="historial_borrado">Historial borrado</string>
+    <string name="nada_que_borrar">No hay nada que borrar aún</string>
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">WhereIsFilm</string>
+    <string name="disponible_en">Available on:</string>
+    <string name="titulo_de_la_pelicula">Movie Title</string>
+    <string name="titulo">Title</string>
+    <string name="buscar">Search</string>
+    <string name="historial_de_busqueda">Search history</string>
+    <string name="historial_vacio">History is empty</string>
+    <string name="borrar_todo">Clear all</string>
+    <string name="historial_de_busquedas">SEARCH HISTORY</string>
+    <string name="error_titulo_vacio">Please enter a title</string>
+    <string name="no_resultados">No results found</string>
+    <string name="error_buscar">SEARCH ERROR</string>
+    <string name="historial_borrado">History cleared</string>
+    <string name="nada_que_borrar">Nothing to clear yet</string>
+</resources>

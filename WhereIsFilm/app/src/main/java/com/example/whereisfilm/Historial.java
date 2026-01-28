@@ -9,6 +9,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+/**
+ * @author Robert
+ * Historial de búsqqueda
+ */
 public class Historial extends AppCompatActivity {
     private SharedPreferences prefs;
     private ListView listView;
@@ -21,11 +25,17 @@ public class Historial extends AppCompatActivity {
         mostrarHistorial();
     }
 
+    /**
+     * Asigna los componentes de la interfaz
+     */
     private void asignarComponentes() {
         prefs = getSharedPreferences("MisPrefs", MODE_PRIVATE);
         listView = findViewById(R.id.listViewHistorial);
     }
 
+    /**
+     * Muestra el historial
+     */
     private void mostrarHistorial() {
         String historial = prefs.getString("historial", "");
         if (!historial.isEmpty()) {
@@ -42,6 +52,11 @@ public class Historial extends AppCompatActivity {
         }
     }
 
+    /**
+     * Borra el historial
+     *
+     * @param view
+     */
     public void borrarTodo(View view) {
         if (!prefs.getString("historial", "").isEmpty()) {
             // Borramos el dato de preferencias
@@ -50,9 +65,9 @@ public class Historial extends AppCompatActivity {
             // Limpiamos la lista
             listView.setAdapter(null);
 
-            Toast.makeText(this, "Historial borrado", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.historial_borrado, Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(this, "No hay nada que borrar aún", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.nada_que_borrar, Toast.LENGTH_SHORT).show();
         }
 
     }

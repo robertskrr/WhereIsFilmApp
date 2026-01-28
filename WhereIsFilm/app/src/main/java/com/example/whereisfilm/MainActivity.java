@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void busqueda(View view) {
         // Si no se ha escrito nada no sirve el botón
         if (tituloBuscar.getText().toString().isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Introduce un título por favor.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.error_titulo_vacio, Toast.LENGTH_SHORT).show();
             return;
         }
 
@@ -157,13 +157,13 @@ public class MainActivity extends AppCompatActivity {
                             intent.putExtra("listaPlataformas", listaPlataformas);
                             startActivity(intent);
                         } else {
-                            Toast.makeText(getApplicationContext(), "No se encontraron resultados", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), R.string.no_resultados, Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onFailure(Call<List<Show>> call, Throwable throwable) {
-                        Toast.makeText(getApplicationContext(), "ERROR AL BUSCAR", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), R.string.error_buscar, Toast.LENGTH_SHORT).show();
                         android.util.Log.e("API_ERROR", "Causa: " + throwable.getMessage());
                     }
                 });
