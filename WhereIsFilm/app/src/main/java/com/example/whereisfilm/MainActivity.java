@@ -107,7 +107,6 @@ public class MainActivity extends AppCompatActivity {
                 .enqueue(new Callback<List<Show>>() {
                     @Override
                     public void onResponse(Call<List<Show>> call, Response<List<Show>> response) {
-                        // Con un Set aseguramos que no se repitan los nombres y ordena alfabéticamente
                         if (response.isSuccessful() && !response.body().isEmpty() && response.body() != null) {
                             List<Show> resultados = response.body();
                             Show encontrada = null;
